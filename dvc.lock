@@ -1,0 +1,129 @@
+schema: '2.0'
+stages:
+  download_data:
+    cmd: Rscript R/build.R
+    deps:
+    - path: R/build.R
+      md5: c712f9923b0df26e83da04068fa6ae51
+      size: 4242
+    outs:
+    - path: data/automated_annotations/README.pdf
+      md5: 5360520d3a51114cb9628d1d3f0526f4
+      size: 3445
+    - path: data/automated_annotations/automated_annotations.parquet
+      md5: dd1e2e84c821666167178cc09d55ab7d
+      size: 2770551
+    - path: data/chemicals/README.pdf
+      md5: afc360f150b573fa6eeb900981876c66
+      size: 3337
+    - path: data/chemicals/chemicals.parquet
+      md5: eb448ef482097359f987cd0052b34aab
+      size: 1168881
+    - path: data/clinicalAnnotations/README.pdf
+      md5: 56ce649e9c4c846181ecd88939f627f9
+      size: 13683
+    - path: data/clinicalAnnotations/clinical_ann_alleles.parquet
+      md5: 201fd5068bc5a4dd4832baf6687d8485
+      size: 840383
+    - path: data/clinicalAnnotations/clinical_ann_evidence.parquet
+      md5: c9935a0f5251111efc581513b0fa0185
+      size: 784805
+    - path: data/clinicalAnnotations/clinical_ann_history.parquet
+      md5: 06abd21c4ba224a7954b88d2b420fd83
+      size: 126973
+    - path: data/clinicalAnnotations/clinical_annotations.parquet
+      md5: aa24897a7214aebad52ce740a2694342
+      size: 190499
+    - path: data/clinicalAnnotations_LOE1-2/README.pdf
+      md5: 56ce649e9c4c846181ecd88939f627f9
+      size: 13683
+    - path: data/clinicalAnnotations_LOE1-2/clinical_ann_alleles.parquet
+      md5: 298b3555132db0ae044e67abb60a75ad
+      size: 108138
+    - path: data/clinicalAnnotations_LOE1-2/clinical_ann_evidence.parquet
+      md5: 388871d41f305d4abd560f17e9653853
+      size: 258336
+    - path: data/clinicalAnnotations_LOE1-2/clinical_ann_history.parquet
+      md5: 4af10f82914b2466046b516395ac7a3f
+      size: 33390
+    - path: data/clinicalAnnotations_LOE1-2/clinical_annotations.parquet
+      md5: 3dec26f6452cfb0f93644c8ae4612065
+      size: 31409
+    - path: data/clinicalVariants/README.pdf
+      md5: ebd37e5d91e0e37f0ed9459e25cab0c4
+      size: 3214
+    - path: data/clinicalVariants/clinicalVariants.parquet
+      md5: f9bd18d221b7f99f3ef3bf63926ab851
+      size: 88383
+    - path: data/drugLabels/README.pdf
+      md5: c8ed3a83dd991cf658c663c78eb8a7bd
+      size: 3699
+    - path: data/drugLabels/drugLabels.byGene.parquet
+      md5: e58132c07f8c6d56f7757dfc6faf7c88
+      size: 28025
+    - path: data/drugLabels/drugLabels.parquet
+      md5: 7d7c8a95d20086cad012fb0de654fb66
+      size: 41760
+    - path: data/drugs/README.pdf
+      md5: 54977c85d598d6f1530ba9beda1cb2a9
+      size: 3353
+    - path: data/drugs/drugs.parquet
+      md5: daee7d6bf67f1efa3ebe36d79587c45c
+      size: 1080420
+    - path: data/genes/README.pdf
+      md5: b34e289efb6276c286b936818b90a9e7
+      size: 2645
+    - path: data/genes/genes.parquet
+      md5: d8b916be5ce0b6d8417583813e010164
+      size: 5540286
+    - path: data/guidelineAnnotations.json.zip
+      md5: 5862b23c8e937d924ddfe093f19978cc
+      size: 1204853
+    - path: data/occurrences/README.pdf
+      md5: 742e2555c240610995ce9b33f94bc4d3
+      size: 3437
+    - path: data/occurrences/occurrences.parquet
+      md5: 2bd637e3c1cfbefeaea4f0fd25094350
+      size: 2368561
+    - path: data/pathways-biopax.zip
+      md5: d119156b7d9ec6f3b5b06db69d2d2c44
+      size: 674167
+    - path: data/pathways-tsv/All_Pathways.parquet
+      md5: b2d946dc90b199824a3676d680406905
+      size: 137166
+    - path: data/pathways-tsv/README.pdf
+      md5: cca3f0831a97f23253a37baaa580358a
+      size: 3100
+    - path: data/phenotypes/README.pdf
+      md5: c436ef027e12da12064e5b92dbfb625f
+      size: 2211
+    - path: data/phenotypes/phenotypes.parquet
+      md5: 8e80b44125fa0c12784221bf5495fc28
+      size: 143473
+    - path: data/relationships/README.pdf
+      md5: 964e0dd6ba890dc5a1c4ff8d587e78a7
+      size: 7946
+    - path: data/relationships/relationships.parquet
+      md5: f24d31a371f7076cbf88825baf9208cb
+      size: 1438649
+    - path: data/variantAnnotations/README.pdf
+      md5: 060dbf1798c34fda14bc576a844fde8d
+      size: 10610
+    - path: data/variantAnnotations/study_parameters.parquet
+      md5: 681db8e73c8c964a53cdf4812f80186f
+      size: 1318202
+    - path: data/variantAnnotations/var_drug_ann.parquet
+      md5: 9a423bd9f62eec8ef651b5221f2a9cd1
+      size: 1420154
+    - path: data/variantAnnotations/var_fa_ann.parquet
+      md5: 7c2f612fea324f5d55b5691229863493
+      size: 225207
+    - path: data/variantAnnotations/var_pheno_ann.parquet
+      md5: 69c89e4f1f990c730ac46cb39327fb48
+      size: 1807473
+    - path: data/variants/README.pdf
+      md5: 41888e54170582c704604e7137cbbdc8
+      size: 2516
+    - path: data/variants/variants.parquet
+      md5: d91a1017f21b7d174cde00b9a69b73be
+      size: 1410827

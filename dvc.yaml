@@ -1,0 +1,46 @@
+stages:
+  download_data:
+    cmd: Rscript R/build.R
+    deps:
+    - R/build.R
+    outs:
+      - data/automated_annotations/README.pdf
+      - data/automated_annotations/automated_annotations.parquet
+      - data/chemicals/README.pdf
+      - data/chemicals/chemicals.parquet
+      - data/clinicalAnnotations/README.pdf
+      - data/clinicalAnnotations/clinical_ann_alleles.parquet
+      - data/clinicalAnnotations/clinical_ann_evidence.parquet
+      - data/clinicalAnnotations/clinical_ann_history.parquet
+      - data/clinicalAnnotations/clinical_annotations.parquet
+      - data/clinicalAnnotations_LOE1-2/README.pdf
+      - data/clinicalAnnotations_LOE1-2/clinical_ann_alleles.parquet
+      - data/clinicalAnnotations_LOE1-2/clinical_ann_evidence.parquet
+      - data/clinicalAnnotations_LOE1-2/clinical_ann_history.parquet
+      - data/clinicalAnnotations_LOE1-2/clinical_annotations.parquet
+      - data/clinicalVariants/README.pdf
+      - data/clinicalVariants/clinicalVariants.parquet
+      - data/drugLabels/README.pdf
+      - data/drugLabels/drugLabels.byGene.parquet
+      - data/drugLabels/drugLabels.parquet
+      - data/drugs/README.pdf
+      - data/drugs/drugs.parquet
+      - data/genes/README.pdf
+      - data/genes/genes.parquet
+      - data/occurrences/README.pdf
+      - data/occurrences/occurrences.parquet
+      - data/pathways-tsv/All_Pathways.parquet
+      - data/pathways-tsv/README.pdf
+      - data/phenotypes/README.pdf
+      - data/phenotypes/phenotypes.parquet
+      - data/relationships/README.pdf
+      - data/relationships/relationships.parquet
+      - data/variantAnnotations/README.pdf
+      - data/variantAnnotations/study_parameters.parquet
+      - data/variantAnnotations/var_drug_ann.parquet
+      - data/variantAnnotations/var_fa_ann.parquet
+      - data/variantAnnotations/var_pheno_ann.parquet
+      - data/variants/README.pdf
+      - data/variants/variants.parquet
+      - data/guidelineAnnotations.json.zip
+      - data/pathways-biopax.zip
