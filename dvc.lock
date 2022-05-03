@@ -127,3 +127,29 @@ stages:
     - path: data/variants/variants.parquet
       md5: d91a1017f21b7d174cde00b9a69b73be
       size: 1410827
+  download:
+    cmd: Rscript R/download.R
+    deps:
+    - path: R/download.R
+      md5: 97fc4122fa78aca8d7009bf09bbeee87
+      size: 918
+    outs:
+    - path: download/
+      md5: 12d47d378f950e45c6e98f5c5967adfa.dir
+      size: 18944585
+      nfiles: 16
+  process:
+    cmd: Rscript R/process.R
+    deps:
+    - path: R/process.R
+      md5: a54c87e3183ea775f168c9e869122d3f
+      size: 2182
+    - path: download/
+      md5: 61a69afabf06c1b69672268a818cfb7d.dir
+      size: 133739719
+      nfiles: 623
+    outs:
+    - path: data/
+      md5: 8dea9be93d1b087882f0e8f78ce92d88.dir
+      size: 25313544
+      nfiles: 42
