@@ -17,6 +17,8 @@ base_name <- function(filename) {
 
 print("Extracting data from zip files")
 fs::dir_ls(download_dir, regexp = "*.zip") |>
+purrr::discard(~ grepl("guidelineAnnotations.json.zip",.x) ||
+grepl("pathways-biopax.zip",.x)) |>
   walk(~ unzip(.x, exdir = file.path(download_dir, base_name(.x))))
 
 print("Converting tsv to parquet files")
@@ -24,6 +26,7 @@ fs::dir_ls(
   path = download_dir,
   recurse = TRUE,
   regexp = "*\\.tsv$") |>
+  purrr::discard(~grepl("pathways-tsv",.x)) |>
   walk(~ {
     subdir <- strsplit(.x, "/") |>
       pluck(1) |>
@@ -35,34 +38,22 @@ fs::dir_ls(
   })
 
 
-print("Combining pathway tsv files into a single parquet file")
+print("Combining pathways-tsv files into a single parquet file")
 # combine into one tsv
 pathways_dir <- "pathways-tsv"
-
-fs::dir_ls(file.path(data_dir,pathways_dir)) |>
-  map(function(parquet_file) {
-    df <- arrow::read_parquet(parquet_file)
+output_dir <- file.path(data_dir,pathways_dir)
+dir_create(output_dir)
+df <- fs::dir_ls(file.path(download_dir,pathways_dir),
+regexp = "*\\.tsv$") |>
+  map(function(filename) {
+    df <- vroom::vroom(filename,col_types="cccccccccc") |> quiet()
     df
   }) |>
-  reduce(function(agg,df) # combine all dataframes
-  {
-    data.table::rbindlist(list(agg,df),fill=TRUE)
-  },.init = tibble()) |>
-  arrow::write_parquet(file.path(data_dir, "pathways.parquet"))
-
-# delete parquet files in pathways-tsv
-dir_ls(
-  path = file.path(data_dir,pathways_dir),
-  recurse = TRUE,
-  regexp = "*\\.parquet$") |>
-walk(~ fs::file_delete(.x))
-
-# copy over parquet file
-fs::file_move(file.path(data_dir, "pathways.parquet"),
-file.path(data_dir,pathways_dir))
+  dplyr::bind_rows() |>
+    arrow::write_parquet(sink = file.path(output_dir, "pathways.parquet"))
 
 # copy readme files
-print("Copying over README.pdf")
+print("Transfering README.pdfs")
 dir_ls( path = download_dir,
 recurse = TRUE,
 regexp = "README.pdf") |>
@@ -74,7 +65,7 @@ walk(~ {
     file.copy(.x,
     fulldir)})
 
-print("copying over unprocessed files")
+print("Transfering unprocessed files")
 # below are files that will be unprocessed
 c("guidelineAnnotations.json.zip",
   "pathways-biopax.zip") |>
