@@ -7,7 +7,8 @@ library(tibble)
 # create dir structure
 download_dir <- "download"
 data_dir <- "data"
-#quiet = pkgcond::suppress_conditions
+install.packages("pkgcond",repos = "http://cran.us.r-project.org")
+quiet = pkgcond::suppress_conditions
 dir_create(data_dir)
 
 base_name <- function(filename) {
@@ -45,7 +46,6 @@ dir_create(output_dir)
 df <- fs::dir_ls(file.path(download_dir,pathways_dir),
 regexp = "*\\.tsv$") |>
   map(function(filename) {
-    #df <- vroom::vroom(filename,col_types="cccccccccc") |> quiet()
     df <- vroom::vroom(filename,col_types="cccccccccc") |> quiet()
     df
   }) |>
