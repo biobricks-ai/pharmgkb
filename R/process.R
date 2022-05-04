@@ -4,7 +4,6 @@ library(tools)
 library(vroom)
 library(arrow)
 library(tibble)
-library(data.table)
 # create dir structure
 download_dir <- "download"
 data_dir <- "data"
