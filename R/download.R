@@ -1,7 +1,6 @@
 library(purrr)
 library(fs)
 
-
 download_dir <- "download"
 
 dir_create(download_dir)
