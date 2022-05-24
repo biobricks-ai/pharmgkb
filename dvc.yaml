@@ -4,8 +4,7 @@ stages:
     deps:
       - R/download.R
     outs: 
-      - download/:
-          cache: false
+      - download/
   process:
     cmd: Rscript R/process.R
     deps:
