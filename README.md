@@ -6,6 +6,7 @@ dependencies:
   - name: pharmgkb
     url: https://www.pharmgkb.org/downloads
 ---
+<a href="https://github.com/biobricks-ai/pharmgkb/actions"><img src="https://github.com/biobricks-ai/pharmgkb/actions/workflows/bricktools-check.yaml/badge.svg?branch=master"/></a>
 
 # Description
 
